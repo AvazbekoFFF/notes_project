@@ -16,8 +16,9 @@ class AuthController extends Controller
 
 
     /**
-     * @param RegisterUserRequest $request
-     * @return JsonResponse
+     * @bodyParam email string required Email of user, example admin@admin.com
+     * @bodyParam password string The password of user
+     * @bodyParam name string The name of user
      */
     public function register(RegisterUserRequest $request): JsonResponse
     {
@@ -29,7 +30,8 @@ class AuthController extends Controller
     }
 
     /**
-     * @return JsonResponse
+     * @bodyParam email string required Email of user, example admin@admin.com
+     * @bodyParam password string The password of user
      */
     public function login(): JsonResponse
     {
@@ -43,7 +45,10 @@ class AuthController extends Controller
     }
 
     /**
-     * @return JsonResponse
+     * @authenticated
+     * @headers {
+     *       "Authorization": "Bearer {token}"
+     *  }
      */
     public function me(): JsonResponse
     {
@@ -51,7 +56,10 @@ class AuthController extends Controller
     }
 
     /**
-     * @return JsonResponse
+     * @authenticated
+     * @headers {
+     *       "Authorization": "Bearer {token}"
+     *  }
      */
     public function logout(): JsonResponse
     {
@@ -61,7 +69,10 @@ class AuthController extends Controller
     }
 
     /**
-     * @return JsonResponse
+     * @authenticated
+     * @headers {
+     *       "Authorization": "Bearer {token}"
+     *  }
      */
     public function refresh(): JsonResponse
     {

@@ -19,6 +19,12 @@ class NoteController extends Controller
         $this->noteRepository = $noteRepository;
     }
 
+    /**
+     * @authenticated
+     * @headers {
+     *       "Authorization": "Bearer {token}"
+     *  }
+     */
     public function index(): JsonResponse
     {
         $notes = $this->noteRepository->all();
@@ -28,6 +34,12 @@ class NoteController extends Controller
         ]);
     }
 
+    /**
+     * @authenticated
+     * @headers {
+     *       "Authorization": "Bearer {token}"
+     *  }
+     */
     public function store(NoteCreateRequest $request): JsonResponse
     {
         $validated = $request->validated();
@@ -38,12 +50,25 @@ class NoteController extends Controller
         ]);
     }
 
+    /**
+     * @authenticated
+     * @urlParam note_id integer
+     * @headers {
+     *       "Authorization": "Bearer {token}"
+     *  }
+     */
     public function show(Note $note): JsonResponse
     {
         $this->noteRepository->find($note);
         return response()->json($note);
     }
 
+    /**
+     * @authenticated
+     * @headers {
+     *       "Authorization": "Bearer {token}"
+     *  }
+     */
     public function update(NoteUpdateRequest $request, Note $note): JsonResponse
     {
         $this->authorize('update-note', $note);
@@ -54,6 +79,12 @@ class NoteController extends Controller
         ]);
     }
 
+    /**
+     * @authenticated
+     * @headers {
+     *       "Authorization": "Bearer {token}"
+     *  }
+     */
     public function destroy(Note $note): JsonResponse
     {
         $this->authorize('delete-note', $note);
