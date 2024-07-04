@@ -13,7 +13,7 @@ class NoteTest extends TestCase
 
     private function login()
     {
-        return $this->post('api/auth/register', [
+        return $this->post('api/register', [
             'email' => 'test@test.bro.com',
             'password' => 'password',
             'name' => 'test-name'
@@ -53,12 +53,14 @@ class NoteTest extends TestCase
     public function test_note_find()
     {
         User::factory()->count(5)->create();
-        $notes = Note::factory()->count(10)->create();
+        Note::factory()->count(10)->create();
         $token = $this->login()['access_token'];
+        $user = User::where('email', 'test@test.bro.com')->first();
+        $myNote = Note::factory()->create(['user_id' => $user->id]);
         $response = $this->withHeader('Authorization', 'Bearer ' . $token)
-            ->get(route('notes.show', $notes[0]->id));
+            ->get(route('notes.show', $myNote->id));
         $response->assertStatus(200);
-        $response->assertSee($notes[0]->title);
+        $response->assertSee($myNote->title);
     }
 
     /**
