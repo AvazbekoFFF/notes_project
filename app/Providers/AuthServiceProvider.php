@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
- use App\Models\Note;
- use App\Models\User;
- use Illuminate\Support\Facades\Gate;
+use App\Models\Note;
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -28,6 +28,9 @@ class AuthServiceProvider extends ServiceProvider
         });
         Gate::define('delete-note', function (User $user, Note $note) {
             return $user->id === $note->user_id;
+        });
+        Gate::define('show-note', function (User $user, Note $note) {
+            return $user->id === $note->user->id;
         });
     }
 }

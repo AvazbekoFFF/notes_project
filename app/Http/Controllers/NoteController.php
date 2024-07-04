@@ -52,13 +52,13 @@ class NoteController extends Controller
 
     /**
      * @authenticated
-     * @urlParam note_id integer
      * @headers {
      *       "Authorization": "Bearer {token}"
      *  }
      */
     public function show(Note $note): JsonResponse
     {
+        $this->authorize('show-note', $note);
         $this->noteRepository->find($note);
         return response()->json($note);
     }
