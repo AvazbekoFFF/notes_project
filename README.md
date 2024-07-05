@@ -16,7 +16,8 @@
 5. `./vendor/bin/sail up --build`
 6. Get the Container name with application with `docker ps -a` like sample ` notes_project-laravel.test-1`
 7. docker exec -it notes_project-laravel.test-1 /bin/bash
-8. php artisan migrate
-9. php artisan db:seed
-10. php artisan jwt:secret
-11. php artisan scribe:generate
+8. php artisan key:generate
+9. php artisan migrate
+10. php artisan db:seed
+11. php artisan jwt:secret
+12. php artisan scribe:generate
