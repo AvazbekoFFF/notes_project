@@ -1,0 +1,218 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/logout:
+    post:
+      summary: ''
+      operationId: postApiLogout
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+  /api/refresh:
+    post:
+      summary: ''
+      operationId: postApiRefresh
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+  /api/me:
+    post:
+      summary: ''
+      operationId: postApiMe
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+  /api/register:
+    post:
+      summary: ''
+      operationId: postApiRegister
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of user'
+                  example: possimus
+                email:
+                  type: string
+                  description: 'Email of user, example admin@admin.com'
+                  example: phyllis42@example.net
+                password:
+                  type: string
+                  description: 'The password of user'
+                  example: '4.n7]9x@ZUrS7M0b'
+              required:
+                - email
+      security: []
+  /api/login:
+    post:
+      summary: ''
+      operationId: postApiLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Email of user, example admin@admin.com'
+                  example: johan97@example.org
+                password:
+                  type: string
+                  description: 'The password of user'
+                  example: 'L]U5eMLU4TQE77@zB'
+              required:
+                - email
+      security: []
+  /api/notes:
+    get:
+      summary: ''
+      operationId: getApiNotes
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Token not provided'
+                properties:
+                  message:
+                    type: string
+                    example: 'Token not provided'
+      tags:
+        - Endpoints
+    post:
+      summary: ''
+      operationId: postApiNotes
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: xzvbrxjqweoge
+                body:
+                  type: string
+                  description: 'Must not be greater than 555 characters.'
+                  example: ijhruorpjemzdisaapzpded
+                user_id:
+                  type: integer
+                  description: ''
+                  example: 8
+              required:
+                - title
+                - body
+                - user_id
+  '/api/notes/{id}':
+    get:
+      summary: ''
+      operationId: getApiNotesId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Token not provided'
+                properties:
+                  message:
+                    type: string
+                    example: 'Token not provided'
+      tags:
+        - Endpoints
+    put:
+      summary: ''
+      operationId: putApiNotesId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: zdxiwptadzrxbyy
+                body:
+                  type: string
+                  description: 'Must not be greater than 555 characters.'
+                  example: vkwsidgtfntmfhm
+                user_id:
+                  type: integer
+                  description: ''
+                  example: 5
+              required:
+                - title
+                - body
+    delete:
+      summary: ''
+      operationId: deleteApiNotesId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the note.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
