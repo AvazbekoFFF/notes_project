@@ -1,4 +1,5 @@
 1. git clone ...
+2. cd notes_project
 2. docker run --rm \
    -u "$(id -u):$(id -g)" \
    -v "$(pwd):/var/www/html" \
