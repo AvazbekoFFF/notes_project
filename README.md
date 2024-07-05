@@ -21,3 +21,9 @@
 10. php artisan db:seed
 11. php artisan jwt:secret
 12. php artisan scribe:generate
+
+
+команда для запуска тестов: php artisan test
+команда для генерации документации апи: php artisan scribe:generate (вернет ссылку на которой будет лежать документация)
+
+Сделан CRUD для модели Note, для того что бы получить данные сперва нужно пройти аутентификацию
